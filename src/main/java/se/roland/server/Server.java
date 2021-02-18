@@ -6,6 +6,7 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,14 @@ public class Server {
         });
         /////  redirect.post("/avs", "https://db.avs.com.ru/shipment-docs/document/clear/yes");
         post("/avs", (req, res) -> {
+            ArrayList <String> data = new ArrayList<>();
+
+            for (var i:db.fields()) {
+                data.add(req.queryParams(i));
+
+            }
+            System.out.println("DATA=>"+data);
+            db.update(data);
             res.redirect("https://db.avs.com.ru/shipment-docs/document/clear/yes");
             return "OK;";
 
