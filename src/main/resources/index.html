@@ -7,12 +7,24 @@
 <body>
 <div>
 <h5>Выберите заказчика</h5>
-<select>
+<select id="customer"    onchange="updateCustomer()" >
     #foreach($customer in $customers)
-    <option value=$customer>$customer</option>
+    <option value='$customer'>$customer</option>
     #end
 </select><br>
-
+    <div id="info"></div>
+<script>
+if (!window.WebSocket) {
+	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
+}
+var socket = new WebSocket("ws://localhost:4567/echo");
+function updateCustomer(){
+    let elem = document.getElementById('customer').value;
+    let info = document.getElementById('info');
+    info.innerHTML = elem;
+    socket.send(elem);
+}
+</script>
 
 </div>
 

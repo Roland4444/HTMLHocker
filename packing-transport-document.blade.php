@@ -636,7 +636,7 @@
         </tr>
         <tr class="main-description">
             <td class="compact-line">Заказчик (плательщик)</td>
-            <td colspan="3" class="bottom-border compact-line" id="customer">14</td>
+            <td colspan="3" class="bottom-border compact-line" id="customer">four text asfdhjasf 1 412  41  4  21kjg4k12gk412 421g 4k21g 4g21 cg4k21 c421 c21  412 cf 42 cf1 cf12</td>
             <td class="compact-line">&nbsp;</td>
         </tr>
         <tr class="main-description">

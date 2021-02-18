@@ -5,6 +5,8 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
+import se.roland.HTMLHooker;
+import se.roland.readfile.Readfile;
 
 import java.io.IOException;
 
@@ -15,7 +17,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class EchoWebSocket {
     // Store sessions if you want to, for example, broadcast a message to all users
     private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
-
+    HTMLHooker hocker = new HTMLHooker();
+    public static String patchfile ;
+    public static String patchTag ;
+    static {
+        Readfile rf = new Readfile("setts.ini");
+        patchfile=rf.readField("PatchPHP");
+        patchTag=rf.readField("PatchTag");
+        System.out.println("patching file=>"+patchfile);
+        System.out.println("patching tag=>"+patchTag);
+    }
     @OnWebSocketConnect
     public void connected(Session session) {
         sessions.add(session);
@@ -36,8 +47,11 @@ public class EchoWebSocket {
 
     @OnWebSocketMessage
     public void message(Session session, String message) throws IOException {
-        System.out.println("Got: " + message);   // Print message
-        session.getRemote().sendString(message); // and send it back
+        System.out.println("message=>"+message);
+        System.out.println(patchfile);
+        System.out.println(patchTag);
+        hocker.patchFile(patchfile, patchTag, message);
+        System.out.println("end");
     }
 
 

@@ -11,6 +11,7 @@ public class HTMLHooker {
         var fos = new FileOutputStream(filename);
         fos.write(str.getBytes());
         fos.close();
+        System.out.println("patch success");
     }
     public String patchString(String input, String Tag, String patched){
         StringBuilder sb = new StringBuilder();
