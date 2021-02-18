@@ -28,6 +28,7 @@ public class Server {
         get("/customers", (req, res) -> {
             model.clear();
             String name = req.queryParams("name");
+            System.out.println(name);
             var rs = db.getCustomer(name);
             if (rs.next())
                 for (var a : db.fields())

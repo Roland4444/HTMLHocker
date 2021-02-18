@@ -2,6 +2,7 @@ package se.roland.DB;
 
 import org.junit.Test;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static org.junit.Assert.*;
@@ -19,11 +20,12 @@ public class DBTest {
 
     @Test
     public void getCustomer() throws ClassNotFoundException, SQLException {
-        String name = "супер организация";
+        String name = "супер организаци пывоаыврпаывалывпплаовлпрваыпрвалоырплваырплдвраыплдваыврдваыд  рловадлр";
         Class.forName("com.mysql.jdbc.Driver");
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         assertNotEquals(null,db.getCustomer(name));
         assertTrue(db.getCustomer(name).next());
+
 
     }
 
@@ -38,7 +40,7 @@ public class DBTest {
 
     @Test
     public void getCustomers() throws ClassNotFoundException, SQLException, InterruptedException {
-        String name = "супер организация";
+        String name = "супер организаци пывоаыврпаывалывпплаовлпрваыпрвалоырплваырплдвраыплдваыврдваыд рловадлр ";
         Class.forName("com.mysql.jdbc.Driver");
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         assertNotEquals(null,db.getCustomers());

@@ -38,7 +38,8 @@ public class DB {
     public ResultSet getCustomer(String name) throws SQLException {
         var arr = new ArrayList();
         arr.add(name);
-        return executor.executePreparedSelect("select * from customer where name=?", arr);
+        System.out.println(arr);
+        return executor.executePreparedSelect("SELECT * FROM customer WHERE TRIM(name) = TRIM(?)", arr);
     }
 
     ;
