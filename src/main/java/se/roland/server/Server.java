@@ -4,6 +4,7 @@ import se.roland.DB.DB;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,16 +27,20 @@ public class Server {
 
         get("/customers", (req, res) -> {
             model.clear();
+            String name = req.queryParams("name");
+            var rs = db.getCustomer(name);
+            if (rs.next())
+                for (var a : db.fields())
+                    model.put(a, rs.getString(a));
             return new VelocityTemplateEngine().render(
                     new ModelAndView(model, "customers.html"));
         });
-      /////  redirect.post("/avs", "https://db.avs.com.ru/shipment-docs/document/clear/yes");
+        /////  redirect.post("/avs", "https://db.avs.com.ru/shipment-docs/document/clear/yes");
         post("/avs", (req, res) -> {
             res.redirect("https://db.avs.com.ru/shipment-docs/document/clear/yes");
-            return  "OK;";
+            return "OK;";
 
         });
-
 
 
     }

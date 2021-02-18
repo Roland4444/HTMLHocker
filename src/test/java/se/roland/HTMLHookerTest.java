@@ -98,4 +98,10 @@ public class HTMLHookerTest {
         HTMLHooker hocker = new HTMLHooker();
         hocker.patchFile(filename, tag2, valuetowrite2);
     }
+    @Test
+    public void patchFileNull() {
+        HTMLHooker hocker = new HTMLHooker();
+        assertEquals(null, hocker.patchString(null, null, null));
+
+    }
 }

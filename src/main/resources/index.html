@@ -6,24 +6,39 @@
 </head>
 <body>
 <div>
-<h5>Выберите заказчика   <button>Управление заказчиками</button></h5>
+<h5>Выберите заказчика   </h5>
 <select id="customer"    onchange="updateCustomer()" >
     #foreach($customer in $customers)
     <option value='$customer'>$customer</option>
     #end
-</select><br>
+</select>
+    <a  id="edit" ><button >Редактирование</button></a>
+    <a href="/customers"><button >Добавление плательщика</button></a>
+    <br>
     <div id="info"></div>
 <script>
 if (!window.WebSocket) {
 	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
-var socket = new WebSocket("ws://localhost:4567/echo");
+
+let socket = new WebSocket("ws://localhost:4567/echo");
 function updateCustomer(){
-    let elem = document.getElementById('customer').value;
     let info = document.getElementById('info');
-    info.innerHTML = elem;
-    socket.send(elem);
+    info.innerHTML = customer.value;
+    socket.send(customer.value);
+    updateHref();
 }
+
+function parseName(elem) {
+ let index = elem.indexOf("ИНН");
+ if (index > 0)
+    return elem.substring(0, index - 1);
+ return elem;
+}
+function updateHref() {
+    edit.setAttribute("href",'/customers?name=' + parseName(customer.value));
+}
+updateHref();
 </script>
 
 </div>
