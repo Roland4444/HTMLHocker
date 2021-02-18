@@ -5,7 +5,6 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +24,17 @@ public class Server {
                     new ModelAndView(model, "index.html"));
         });
 
+        get("/customers", (req, res) -> {
+            model.clear();
+            return new VelocityTemplateEngine().render(
+                    new ModelAndView(model, "customers.html"));
+        });
+      /////  redirect.post("/avs", "https://db.avs.com.ru/shipment-docs/document/clear/yes");
+        post("/avs", (req, res) -> {
+            res.redirect("https://db.avs.com.ru/shipment-docs/document/clear/yes");
+            return  "OK;";
+
+        });
 
 
 
