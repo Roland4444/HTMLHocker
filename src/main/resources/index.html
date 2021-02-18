@@ -30,9 +30,9 @@ function updateCustomer(){
 }
 
 function parseName(elem) {
- let index = elem.indexOf("ИНН");
+ let index = elem.indexOf(", ИНН");
  if (index > 0)
-    return elem.substring(0, index - 1);
+    return elem.substring(0, index);
  return elem;
 }
 function updateHref() {
