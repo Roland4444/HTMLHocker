@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class DBTest {
 
-
+/*
     @Test
     public void testConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
@@ -20,7 +20,7 @@ public class DBTest {
 
     @Test
     public void getCustomer() throws ClassNotFoundException, SQLException {
-        String name = "супер организаци пывоаыврпаывалывпплаовлпрваыпрвалоырплваырплдвраыплдваыврдваыд  рловадлр";
+        String name = "супер организация";
         Class.forName("com.mysql.jdbc.Driver");
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         assertNotEquals(null,db.getCustomer(name));
@@ -45,5 +45,5 @@ public class DBTest {
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         assertNotEquals(null,db.getCustomers());
 
-    }
+    }*/
 }

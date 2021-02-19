@@ -15,9 +15,10 @@ public class Server {
     public static Map<String, Object> model = new HashMap<>();
 
     public static void main(String[] args) throws SQLException {
+        port(4568);
         staticFiles.location("/public");
         webSocket("/echo", EchoWebSocket.class);
-        var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
+        var db = new DB("jdbc:mysql://localhost:3306/shipment_docs", "shipment_docs", "evbhPoU5JkW9fZyX");
         get("/", (req, res) -> {
             model.clear();
             model.put("customers", db.getCustomers());
