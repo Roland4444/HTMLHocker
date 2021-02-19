@@ -60,11 +60,23 @@ public class DB {
     }
 
     public void update(ArrayList<String> data) throws SQLException {
-        PreparedStatement stmt = executor.getConn().prepareStatement("update customer set name = ?, inn=?, address =?, tel =?, acc=?, bank = ?, bik=?, koracc = ?  where TRIM(name)=TRIM(?)");// metal_id =
+        PreparedStatement stmt = executor.getConn().prepareStatement("update customer set name = ?, inn=?, address =?, tel =?, acc=?, bank = ?, bik=?, koracc = ?  where TRIM(name)=TRIM(?)");
         for (int i=0; i<9; i++)
-            stmt.setString(i+1, (String) data.get(i));
-        stmt.executeUpdate();
+            stmt.setString(i+1, data.get(i));
         System.out.println(stmt);
-    };
+        stmt.executeUpdate();
+    }
+    public void create(ArrayList<String> data) throws SQLException {
+        PreparedStatement stmt = executor.getConn().prepareStatement("insert into customer values (null,?,?,?,?,?,?,?,?)");
+        for (int i=0; i< fields().length; i++)
+            stmt.setString(i+1, data.get(i));
+        stmt.executeUpdate();
+    }
 
+    public void delete(String name) throws SQLException {
+        PreparedStatement stmt = executor.getConn().prepareStatement("delete from customer where TRIM(name)=TRIM(?)");
+        stmt.setString(1, name);
+        stmt.executeUpdate();
+        System.out.println("delete");
+    }
 }

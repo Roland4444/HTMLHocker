@@ -636,7 +636,7 @@
         </tr>
         <tr class="main-description">
             <td class="compact-line">Заказчик (плательщик)</td>
-            <td colspan="3" class="bottom-border compact-line" id="customer">14</td>
+            <td colspan="3" class="bottom-border compact-line" id="customer">я тебя добавил через форму/, ИНН 1, УРААА\, тел.: 2, р/с 3, Банкуем, БИК 4, к/с 5</td>
             <td class="compact-line">&nbsp;</td>
         </tr>
         <tr class="main-description">
