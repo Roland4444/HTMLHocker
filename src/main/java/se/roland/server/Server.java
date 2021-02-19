@@ -45,6 +45,7 @@ public class Server {
                 data.add(req.queryParams(i));
 
             }
+            data.add(req.queryParams("oldname"));
             System.out.println("DATA=>"+data);
             db.update(data);
             res.redirect("https://db.avs.com.ru/shipment-docs/document/clear/yes");

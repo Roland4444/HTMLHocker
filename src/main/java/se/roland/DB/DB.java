@@ -67,9 +67,12 @@ public class DB {
         return arr;
     }
 
-    public void update(ArrayList data) throws SQLException {
+    public void update(ArrayList<String> data) throws SQLException {
         var counter=0;
-        PreparedStatement stmt = executor.getConn().prepareStatement("update customer set name = ?, inn=?, address =?, tel =?, acc=?, bank = ?, koracc = ?  where TRIM(name)=TRIM(?)");// metal_id =
+        PreparedStatement stmt = executor.getConn().prepareStatement("update customer set name = ?, inn=?, address =?, tel =?, acc=?, bank = ?, bik=?, koracc = ?  where TRIM(name)=TRIM(?)");// metal_id =
+        for (int i=0; i<9; i++)
+            stmt.setString(i+1, (String) data.get(i));
+        stmt.executeUpdate();
         System.out.println(stmt);
     //    for (var i: fields())
     //        executor.executePreparedSelect("update customer set "+i+"=? where TRIM(name)=TRIM("+data.get(0)+") ", (ArrayList<Object>) data.subList(counter, counter++));

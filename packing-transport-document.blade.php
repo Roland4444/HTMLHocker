@@ -636,7 +636,7 @@
         </tr>
         <tr class="main-description">
             <td class="compact-line">Заказчик (плательщик)</td>
-            <td colspan="3" class="bottom-border compact-line" id="customer">супер организаци пывоаыврпаывалывпплаовлпрваыпрвалоырплваырплдвраыплдваыврдваыд  рловадлр  , ИНН 2352525252, my address coder, тел.: 338870, р/с 522365747527547234534534, Spermbank, БИК 03124214, к/с 345678903456789034567890</td>
+            <td colspan="3" class="bottom-border compact-line" id="customer">second text, ИНН null, null, тел.: null, р/с null, null, БИК null, к/с null</td>
             <td class="compact-line">&nbsp;</td>
         </tr>
         <tr class="main-description">

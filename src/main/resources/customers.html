@@ -38,7 +38,8 @@
                                 <label for="name">Наименование</label>
                             </div>
                             <div class="col-md-10 mb-10">
-                                <input type="text" id="name" name="name" class="form-control" value='$name'>
+                                <input type="text" id="name" name="name" class="form-control" value='$!name'>
+                                <input type="text" name="oldname" hidden="true" value='$!name'>
                             </div>
                         </div>
                         <div class="row inputs">
