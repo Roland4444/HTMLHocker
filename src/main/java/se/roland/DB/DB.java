@@ -1,37 +1,29 @@
 package se.roland.DB;
-
 import fr.roland.DB.Executor;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 public class DB {
     public Executor executor;
-
     public DB(String url, String login, String pass) throws SQLException {
         executor = new Executor(url, login, pass);
     }
-
     public ArrayList getCustomers() throws SQLException, InterruptedException {
         var arr = new ArrayList();
         var select = executor.submit("select * from customer");
-        while (select.next()) {
+        while (select.next())
             arr.add(formatCustomer(select.getString("name")));
-        }
         return arr;
     }
 
     public String formatCustomer(String name) throws SQLException, InterruptedException {
         var rs = getCustomer(name);
-
         var sb = new StringBuilder();
         if (rs.next())
         for (int i= 0; i<dict().length; i++)
             sb.append(dict()[i]+rs.getString(fields()[i]));
-
-    return sb.toString();
+        return sb.toString();
     };
 
     public ResultSet getCustomer(String name) throws SQLException {
@@ -68,15 +60,11 @@ public class DB {
     }
 
     public void update(ArrayList<String> data) throws SQLException {
-        var counter=0;
         PreparedStatement stmt = executor.getConn().prepareStatement("update customer set name = ?, inn=?, address =?, tel =?, acc=?, bank = ?, bik=?, koracc = ?  where TRIM(name)=TRIM(?)");// metal_id =
         for (int i=0; i<9; i++)
             stmt.setString(i+1, (String) data.get(i));
         stmt.executeUpdate();
         System.out.println(stmt);
-    //    for (var i: fields())
-    //        executor.executePreparedSelect("update customer set "+i+"=? where TRIM(name)=TRIM("+data.get(0)+") ", (ArrayList<Object>) data.subList(counter, counter++));
-    //   System.out.println("ending update");
     };
 
 }

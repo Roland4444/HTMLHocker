@@ -636,7 +636,7 @@
         </tr>
         <tr class="main-description">
             <td class="compact-line">Заказчик (плательщик)</td>
-            <td colspan="3" class="bottom-border compact-line" id="customer">second text, ИНН null, null, тел.: null, р/с null, null, БИК null, к/с null</td>
+            <td colspan="3" class="bottom-border compact-line" id="customer">14</td>
             <td class="compact-line">&nbsp;</td>
         </tr>
         <tr class="main-description">
