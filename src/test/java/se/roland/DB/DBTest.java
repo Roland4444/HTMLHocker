@@ -20,7 +20,7 @@ public class DBTest {
 
     @Test
     public void getCustomer() throws ClassNotFoundException, SQLException {
-        String name = "супер организаци пывоаыврпаывалывпплаовлпрваыпрвалоырплваырплдвраыплдваыврдваыд  рловадлр";
+        String name = "Первая организация";
         Class.forName("com.mysql.jdbc.Driver");
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         assertNotEquals(null,db.getCustomer(name));
