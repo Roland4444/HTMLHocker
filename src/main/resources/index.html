@@ -13,7 +13,7 @@
 if (!window.WebSocket) {
 	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
-let ip = "192.168.0.2";
+let ip = "customer.avs.com.ru";
 let socket = new WebSocket("wss://" + ip + ":4568/echo");
 function updateCustomer(){
     socket.send(customer.value);
