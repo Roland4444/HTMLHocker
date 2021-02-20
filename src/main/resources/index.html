@@ -1,14 +1,6 @@
-<div>
-    <h5><b>Выберите заказчика</b></h5>
-<select id="customer" onchange="updateCustomer()" style="width : 900px;" class="form-control ui-date hasDatepicker">
-    #foreach($customer in $customers)
-    <option value='$customer'>$customer</option>
-    #end
-</select>
-    <a  id="edit" ><button class="btn btn-default" >Редактирование</button></a>
-    <a id="add"><button class="btn btn-default">Добавление плательщика</button></a>
-    <br>
-    <div id="info"></div>
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="custom" onchange="updateCustomer()">
+    <label class="custom-control-label" for="custom">Заказчик/Плательщик Астрвторсырье</label>
 <script>
 if (!window.WebSocket) {
 	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
@@ -16,23 +8,13 @@ if (!window.WebSocket) {
 let ip = "192.168.0.126";
 let socket = new WebSocket("wss://" + ip + ":4568/echo");
 function updateCustomer(){
-    socket.send(customer.value);
-    updateHref();
+    console.log(custom.value)
+    socket.send(custom.checked);
 }
+socket.onopen = function() {
+ updateCustomer()
+};
 
-function parseName(elem) {
- let index = elem.indexOf(", ИНН");
- if (index > 0)
-    return elem.substring(0, index);
- return elem;
-}
-
-function updateHref() {
- add.setAttribute("href",'https://' + ip + ':4568/customers?name=');
- edit.setAttribute("href",'https://' + ip + ':4568/customers?name=' + parseName(customer.value));
-
-}
-updateHref();
 </script>
 </div>
 

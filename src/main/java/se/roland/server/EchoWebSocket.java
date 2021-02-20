@@ -40,10 +40,13 @@ public class EchoWebSocket {
     }
     @OnWebSocketMessage
     public void message(Session session, String message) throws IOException {
-        System.out.println("message=>"+message);
-        System.out.println(patchfile);
-        System.out.println(patchTag);
-        hocker.patchFile(patchfile, patchTag, message);
-        System.out.println("end");
+        System.out.println(message);
+        var other = "{{ $document->payer->legal_name }}, ИНН {{ $document->payer->inn }}, {{ $document->payer->address  }}, тел.: {{ $document->payer->phone }}, {{ $document->payer->account }}";
+        var avs = "{{ $requisites->full_name }}, ИНН {{ $requisites->inn }}, {{ $requisites->address }}, тел.: {{ $requisites->phone }}, {{ $requisites->account }}";
+        switch (message){
+            case "true" ->  hocker.patchFile(patchfile, patchTag, avs);
+            case "false" ->  hocker.patchFile(patchfile, patchTag, other);
+        }
+
     }
 }
