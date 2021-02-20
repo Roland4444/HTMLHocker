@@ -22,4 +22,13 @@ public class HTMLHooker {
         sb.append(sub.substring(index2));
         return sb.toString();
     }
+    public String readCurrent(String filename, String tag) throws IOException {
+        var str = new String(Files.readAllBytes(Path.of(filename)));
+        var index = str.indexOf(tag);
+        var sub = str.substring(index+tag.length());
+        var index2 = sub.indexOf("</");
+        var res = sub.substring(0,index2);
+        return res;
+    }
+
 }

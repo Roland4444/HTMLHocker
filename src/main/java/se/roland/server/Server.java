@@ -1,6 +1,7 @@
 package se.roland.server;
 
 import se.roland.DB.*;
+import se.roland.HTMLHooker;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import java.sql.SQLException;
@@ -18,15 +19,15 @@ public class Server {
     private static String trustStorePassword="123abc";
 
     public static void main(String[] args) throws SQLException {
-
         port(4568);
         secure(keyStorePath, keyStorePassword, trustStorePath, trustStorePassword);
         staticFiles.location("/public");
         webSocket("/echo", EchoWebSocket.class);
+        HTMLHooker hocker = new HTMLHooker();
         var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         get("/", (req, res) -> {
             model.clear();
-            model.put("customers", db.getCustomers());
+            model.put("customers", db.getCustomers(hocker.readCurrent(EchoWebSocket.patchfile, EchoWebSocket.patchTag)));
             return new VelocityTemplateEngine().render(
                     new ModelAndView(model, "index.html"));
         });

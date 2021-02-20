@@ -7,7 +7,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class HTMLHookerTest {
-   /* String tag = "<bar22>";
+    String tag = "<bar22>";
     String input= """
         12
         <bar22>12655</bar22>
@@ -76,8 +76,8 @@ public class HTMLHookerTest {
                           <td class="bottom-border compact-line">{{ $document->driver->surname }} {{ $document->driver->name }} {{ $document->driver->patronymic }}</td>
                           <td class="compact-line">Удостоверение №</td>
                           <td class="bottom-border compact-line">{{ $document->driver->license }}</td>
-                      </tr>""";*/
-   /* @Test
+                      </tr>""";
+    @Test
     public void patchFile() {
         HTMLHooker hocker = new HTMLHooker();
         assertEquals(etalon, hocker.patchString(input, tag, valuetowrite));
@@ -97,11 +97,22 @@ public class HTMLHookerTest {
         String filename = "/var/www/shipmentdocs/resources/views/packing-transport-document.blade.php";
         HTMLHooker hocker = new HTMLHooker();
         hocker.patchFile(filename, tag2, valuetowrite2);
-    }*/
+    }
     @Test
     public void patchFileNull() {
         HTMLHooker hocker = new HTMLHooker();
         assertEquals(null, hocker.patchString(null, null, null));
+
+    }
+
+    @Test
+    public void readCurrent() throws IOException {
+        String PatchPHP="currenttest.php";
+        HTMLHooker hocker = new HTMLHooker();
+        String etalon = "вот это вау организация пивоваренный завод  , ИНН 2352525252, my address coder, тел.: 338870, р/с 522365747527547234534534, Spermbank, БИК 03124214, к/с 345678903456789034567890";
+        assertEquals(etalon, hocker.readCurrent(PatchPHP, tag2));
+
+
 
     }
 }
