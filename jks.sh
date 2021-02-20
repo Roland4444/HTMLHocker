@@ -1,0 +1,1 @@
+keytool -genkey -alias htmlhooker.avs.com.ru -keyalg RSA -keystore keystore.jks  -keysize 2048

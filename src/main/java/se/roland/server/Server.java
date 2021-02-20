@@ -23,7 +23,7 @@ public class Server {
         secure(keyStorePath, keyStorePassword, trustStorePath, trustStorePassword);
         staticFiles.location("/public");
         webSocket("/echo", EchoWebSocket.class);
-        var db = new DB("jdbc:mysql://localhost:3306/shipment_docs", "shipment_docs", "evbhPoU5JkW9fZyX");
+        var db = new DB("jdbc:mysql://192.168.0.21:3306/shipment_docs", "root", "root");
         get("/", (req, res) -> {
             model.clear();
             model.put("customers", db.getCustomers());
