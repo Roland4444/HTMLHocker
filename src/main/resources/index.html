@@ -14,7 +14,7 @@ if (!window.WebSocket) {
 	document.body.innerHTML = 'WebSocket в этом браузере не поддерживается.';
 }
 let ip = "192.168.0.2";
-let socket = new WebSocket("ws://" + ip + ":4568/echo");
+let socket = new WebSocket("wss://" + ip + ":4568/echo");
 function updateCustomer(){
     socket.send(customer.value);
     updateHref();
@@ -28,8 +28,8 @@ function parseName(elem) {
 }
 
 function updateHref() {
- add.setAttribute("href",'http://' + ip + ':4568/customers?name=');
- edit.setAttribute("href",'http://' + ip + ':4568/customers?name=' + parseName(customer.value));
+ add.setAttribute("href",'https://' + ip + ':4568/customers?name=');
+ edit.setAttribute("href",'https://' + ip + ':4568/customers?name=' + parseName(customer.value));
 
 }
 updateHref();

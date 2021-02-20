@@ -636,7 +636,7 @@
         </tr>
         <tr class="main-description">
             <td class="compact-line">Заказчик (плательщик)</td>
-            <td colspan="3" class="bottom-border compact-line" id="customer">я тебя добавил через форму/, ИНН 1, УРААА\, тел.: 2, р/с 3, Банкуем, БИК 4, к/с 5</td>
+            <td colspan="3" class="bottom-border compact-line" id="customer">вот это вау организация пивоваренный завод  , ИНН 2352525252, my address coder, тел.: 338870, р/с 522365747527547234534534, Spermbank, БИК 03124214, к/с 345678903456789034567890</td>
             <td class="compact-line">&nbsp;</td>
         </tr>
         <tr class="main-description">
@@ -765,7 +765,13 @@
                 <td class="main-table with-border">&nbsp;</td>
                 <td class="main-table with-border">&nbsp;</td>
                 <td class="main-table with-border">&nbsp;</td>
-                <td class="main-table with-border">20,1</td>
+                <td class="main-table with-border">
+<?php
+$n = $document->totalQuantityFormatted;
+$format = floatval(str_replace(" ", "", $n))/1000;
+echo $format;
+?>
+</td>
             </tr>
 
             <tr>
@@ -796,7 +802,11 @@
                 </td>
                 <td class="main-table with-border" rowspan="2">&nbsp;</td>
                 <td class="main-table with-border" rowspan="2" colspan="2" style="vertical-align: top; border-bottom: 0">Итого: масса брутто, т</td>
-                <td class="main-table with-border" style="vertical-align: bottom" rowspan="2">20,1</td>
+                <td class="main-table with-border" style="vertical-align: bottom" rowspan="2">
+<?php
+echo $format;
+?>
+</td>
             </tr>
 
             <tr>
