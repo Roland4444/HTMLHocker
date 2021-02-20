@@ -19,7 +19,6 @@ public class DB {
 
     public ArrayList getCustomers(String current) throws SQLException, InterruptedException {
         var arr = new ArrayList();
-        System.out.println("Current>>"+current);
         arr.add(current);
         var select = executor.submit("select * from customer");
         while (select.next()) {
@@ -27,7 +26,6 @@ public class DB {
             if (!current.equals(cur))
                 arr.add(formatCustomer(select.getString("name")));
         }
-        System.out.println("ARR>>"+arr);
         return arr;
     }
     public String formatCustomer(String name) throws SQLException, InterruptedException {
